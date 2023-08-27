@@ -8,12 +8,18 @@ export interface Product {
   rating: ProductRating;
 }
 
+export interface ProductFilterParams {
+  title: string;
+  category: string[];
+}
+
 export interface ProductRating {
   rate: number;
   count: number;
 }
 
 export type ProductCategoryTypes =
+  | "all"
   | "electronics"
   | "jewelery"
   | "men's clothing"
