@@ -25,7 +25,7 @@ const ProductDatailsScreen: React.FC<ScreenProps> = ({ route }) => {
   const product = data?.data!;
 
   return (
-    <ScreenContainer justifyContent="justify-start">
+    <ScreenContainer>
       <View className="bg-white -mt-16 rounded-b-3xl w-screen justify-self-start">
         <View className="mb-2 mt-24 relative">
           <Image
