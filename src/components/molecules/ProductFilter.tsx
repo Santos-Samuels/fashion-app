@@ -1,9 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { ProductFilterParams } from "@src/shared/interfaces/Product";
 import { colors } from "@src/shared/themes/colors";
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import Button from "../atoms/Button";
 import CategoryBridge from "../atoms/CategoryBridge";
+import Input from "../atoms/Input";
 
 interface ProductFilterProps {
   filters?: ProductFilterParams;
@@ -66,16 +67,16 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
   return (
     <>
       <View className="flex-row items-center justify-between mb-3 w-full">
-        <View className="flex-1 flex-row items-center bg-white rounded-lg px-3 py-2 mr-2">
-          <Ionicons name="search" size={24} color={colors.iconColor_light} />
-          <TextInput
-            className="flex-1 ml-2 text-zinc-700"
-            placeholder="Search by title"
-            defaultValue={filterItems.title || ""}
-            onChangeText={(text) => setFilters({ ...filterItems, title: text })}
-            style={{ fontSize: 17 }}
-          />
-        </View>
+        <Input
+          adicionalClass="mr-2"
+          placeholder="Search by title"
+          defaultValue={filterItems.title || ""}
+          onChangeText={(text) => setFilters({ ...filterItems, title: text })}
+          style={{ fontSize: 17 }}
+          icon={
+            <Ionicons name="search" size={24} color={colors.iconColor_light} />
+          }
+        />
         <Button size="sm" onPress={filterHandler} title="Clear" />
       </View>
 
