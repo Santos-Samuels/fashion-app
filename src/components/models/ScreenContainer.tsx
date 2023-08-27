@@ -1,12 +1,19 @@
 import React, { PropsWithChildren } from "react";
 import { SafeAreaView, View } from "react-native";
 
-const ScreenContainer: React.FC<PropsWithChildren> = ({ children }) => {
+interface ScreenContainerProps extends PropsWithChildren {
+  justifyContent?: "justify-center" | "justify-start" | "justify-end";
+  className?: string;
+}
+
+const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, justifyContent, className }) => {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-slate-200">
-      <View className="m-3">
-        {children}
-      </View>
+    <SafeAreaView
+      className={`flex-1 items-center bg-slate-200 ${
+        justifyContent ?? "justify-center"
+      } ${className}`}
+    >
+      <View className="m-3">{children}</View>
     </SafeAreaView>
   );
 };
