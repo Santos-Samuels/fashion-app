@@ -1,20 +1,31 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "@src/routes/stack.routes";
 import { Product } from "@src/shared/interfaces/Product";
-import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 interface ProductItemProps {
   product: Product;
   index: number;
 }
 
+type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDatails">;
+
 const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
+  const navigation = useNavigation();
+
   const getOfferPrice = (price: number) => {
     return (price - price * 0.1).toFixed(2);
   };
-  
+
   return (
-    <View className={`w-1/2 mb-3 ${index % 2 === 1 && "pl-3"}`}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("ProductDatails", { productId: product.id })
+      }
+      className={`w-1/2 mb-3 ${index % 2 === 1 && "pl-3"}`}
+    >
       <View className="bg-white p-3 rounded-xl relative">
         <View className="items-center absolute right-3 p-1 rounded-b-lg z-10 bg-slate-100">
           <Ionicons name="star" size={18} color="#e4ca05" />
@@ -45,7 +56,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -1,5 +1,4 @@
 import { Product } from '@src/shared/interfaces/Product';
-import React from 'react';
 import { FlatList, Text } from 'react-native';
 import ProductItem from '../molecules/ProductItem';
 
