@@ -1,10 +1,12 @@
-import { SafeAreaView } from "react-native";
-import { ProductsScreen } from "./src/screens";
+import AppRoutes from "@src/routes/app.routes";
+import { StatusBar } from "expo-status-bar";
+import { View } from "react-native";
 
 export default function App() {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-slate-200">
-      <ProductsScreen />
-    </SafeAreaView>
+    <View className="flex-1">
+      <StatusBar style="auto" />
+      <AppRoutes />
+    </View>
   );
 }
