@@ -1,7 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "@src/routes/stack.routes";
+import { getOfferPrice } from "@src/shared/helpers/getOfferPrice";
 import { Product } from "@src/shared/interfaces/Product";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -10,14 +9,8 @@ interface ProductItemProps {
   index: number;
 }
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDatails">;
-
 const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
   const navigation = useNavigation();
-
-  const getOfferPrice = (price: number) => {
-    return (price - price * 0.1).toFixed(2);
-  };
 
   return (
     <TouchableOpacity
