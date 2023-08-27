@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ProductDatailsScreen } from "@src/screens";
+import { ProductDetailsScreen } from "@src/screens";
 import TabRoutes from "./tab.routes";
 
 export type RootStackParamList = {
   HomesTab: undefined;
-  ProductDatails: { productId: number };
+  ProductDetails: { productId: number };
 };
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
@@ -16,7 +16,7 @@ const StackRoutes = () => {
       screenOptions={{ headerShown: false }}
     >
       <Screen name="HomesTab" component={TabRoutes} />
-      <Screen name="ProductDatails" component={ProductDatailsScreen} />
+      <Screen name="ProductDetails" component={ProductDetailsScreen} />
     </Navigator>
   );
 };

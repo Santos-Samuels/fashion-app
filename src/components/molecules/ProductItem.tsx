@@ -25,7 +25,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
       className={`mb-3 ${index % 2 === 1 && "pl-3"}`}
       style={{ width: itemWidth }}
       onPress={() =>
-        navigation.navigate("ProductDatails", { productId: product.id })
+        navigation.navigate("ProductDetails", { productId: product.id })
       }
     >
       <View className="bg-white p-3 rounded-xl relative">

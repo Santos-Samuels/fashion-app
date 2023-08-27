@@ -6,9 +6,9 @@ import { ProductServices } from "@src/shared/services";
 import { useQuery } from "@tanstack/react-query";
 import { Image, Text, View } from "react-native";
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDatails">;
+type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDetails">;
 
-const ProductDatailsScreen: React.FC<ScreenProps> = ({ route }) => {
+const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
   const { productId } = route.params;
 
   const { isLoading, data } = useQuery({
@@ -79,4 +79,4 @@ const ProductDatailsScreen: React.FC<ScreenProps> = ({ route }) => {
   );
 };
 
-export default ProductDatailsScreen;
+export default ProductDetailsScreen;

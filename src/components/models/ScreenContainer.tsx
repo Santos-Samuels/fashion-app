@@ -10,7 +10,7 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, justifyCont
   return (
     <SafeAreaView
       className={`flex-1 items-center bg-zinc-200 ${
-        justifyContent ?? "justify-center"
+        justifyContent ?? "justify-start"
       } ${className}`}
     >
       <View className="m-3">{children}</View>

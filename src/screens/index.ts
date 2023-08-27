@@ -1,7 +1,7 @@
 import CartScreen from "./CartScreen";
 import HomeScreen from "./HomeScreen";
-import ProductDatailsScreen from "./ProductDatailsScreen";
+import ProductDetailsScreen from "./ProductDetailsScreen";
 import ProductsScreen from "./ProductsScreen";
 
-export { CartScreen, HomeScreen, ProductDatailsScreen, ProductsScreen };
+export { CartScreen, HomeScreen, ProductDetailsScreen, ProductsScreen };
 
