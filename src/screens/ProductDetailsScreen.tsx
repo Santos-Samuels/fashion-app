@@ -1,17 +1,26 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { BackButton, Button, ProductRate, ScreenContainer } from "@src/components";
+import {
+  BackButton,
+  Button,
+  InputNumber,
+  ProductRate,
+  ScreenContainer,
+  VoidListMessage,
+} from "@src/components";
 import { RootStackParamList } from "@src/routes/stack.routes";
 import { getOfferPrice } from "@src/shared/helpers/getOfferPrice";
 import { ProductServices } from "@src/shared/services";
 import { useQuery } from "@tanstack/react-query";
-import { Image, Text, View } from "react-native";
+import { useState } from "react";
+import { Image, ScrollView, Text, View } from "react-native";
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDetails">;
 
 const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
   const { productId } = route.params;
+  const [quantity, setQuantity] = useState<number>(1);
 
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, error } = useQuery({
     queryKey: [`product-${productId}`],
     queryFn: ProductServices.getById.bind(null, productId),
   });
@@ -22,7 +31,10 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
 
   if (isLoading) return <Text>Loading...</Text>;
 
-  const product = data?.data!;
+  if (error || !data?.data)
+    return <VoidListMessage message="Failed to load product details!" />;
+
+  const product = data.data;
 
   return (
     <ScreenContainer>
@@ -34,7 +46,6 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
             style={{ height: 350, width: 350 }}
             resizeMode="contain"
           />
-
           <BackButton absolute />
         </View>
 
@@ -44,7 +55,7 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
       </View>
 
       <View className="m-3 flex-1 justify-between">
-        <View>
+        <ScrollView>
           <Text className="text-lg font-semibold">{product.title}</Text>
 
           <Text className="text-lg font-semibold mt-3">Description</Text>
@@ -52,12 +63,17 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
             {formatDescription(product.description)}
           </Text>
 
-          <ProductRate
-            rating={product.rating}
-            starsSize={25}
-            key={`rate-product-${product.id}`}
-          />
-        </View>
+          <View className="flex-row items-center justify-between">
+            <View>
+              <Text className="text-lg font-semibold">Rating</Text>
+              <ProductRate rating={product.rating} starsSize={25} />
+            </View>
+            <View className="flex-1 ml-4">
+              <Text className="text-lg font-semibold">Quantity</Text>
+              <InputNumber value={quantity} setValue={setQuantity} />
+            </View>
+          </View>
+        </ScrollView>
 
         <View className="flex-row items-end justify-between">
           <View>

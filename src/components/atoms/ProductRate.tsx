@@ -41,6 +41,7 @@ const ProductRate: React.FC<ProductRateProps> = ({ rating, starsSize }) => {
         <Text className="font-bold ml-2 text-lg">{rating.rate}</Text>
       </View>
 
+      <Text className="text-zinc-400 mx-2">|</Text>
       <Text className="text-zinc-400">{rating.count} Reviews</Text>
     </View>
   );
