@@ -5,10 +5,10 @@ export interface Product {
   description: string;
   category: string;
   image: string;
-  rating: Rating;
+  rating: ProductRating;
 }
 
-export interface Rating {
+export interface ProductRating {
   rate: number;
   count: number;
 }
