@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Button, ProductRate, ScreenContainer } from "@src/components";
+import { BackButton, Button, ProductRate, ScreenContainer } from "@src/components";
 import { RootStackParamList } from "@src/routes/stack.routes";
 import { getOfferPrice } from "@src/shared/helpers/getOfferPrice";
 import { ProductServices } from "@src/shared/services";
@@ -27,12 +27,16 @@ const ProductDatailsScreen: React.FC<ScreenProps> = ({ route }) => {
   return (
     <ScreenContainer justifyContent="justify-start">
       <View className="bg-white -mt-16 rounded-b-3xl w-screen justify-self-start">
-        <Image
-          className="self-center mb-2 mt-24"
-          source={{ uri: product.image }}
-          style={{ height: 350, width: 350 }}
-          resizeMode="contain"
-        />
+        <View className="mb-2 mt-24 relative">
+          <Image
+            className="self-center"
+            source={{ uri: product.image }}
+            style={{ height: 350, width: 350 }}
+            resizeMode="contain"
+          />
+
+          <BackButton absolute />
+        </View>
 
         <Text className="text-center mb-3 text-zinc-500">
           {product.category}
@@ -48,7 +52,11 @@ const ProductDatailsScreen: React.FC<ScreenProps> = ({ route }) => {
             {formatDescription(product.description)}
           </Text>
 
-          <ProductRate rating={product.rating} starsSize={25} key={`rate-product-${product.id}`} />
+          <ProductRate
+            rating={product.rating}
+            starsSize={25}
+            key={`rate-product-${product.id}`}
+          />
         </View>
 
         <View className="flex-row items-end justify-between">
