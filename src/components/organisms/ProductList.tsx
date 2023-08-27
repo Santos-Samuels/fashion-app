@@ -1,6 +1,6 @@
-import { Product } from '@src/shared/interfaces/Product';
-import { FlatList, Text } from 'react-native';
-import ProductItem from '../molecules/ProductItem';
+import { Product } from "@src/shared/interfaces/Product";
+import { FlatList, Text } from "react-native";
+import ProductItem from "../molecules/ProductItem";
 
 interface ProductListProps {
   products?: Product[];
@@ -14,15 +14,16 @@ const ProductList: React.FC<ProductListProps> = ({ products, isLoading }) => {
 
   return (
     <FlatList
-        className="flex-1 flex-wrap"
-        numColumns={2}
-        data={products}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item, index }) => (
-          <ProductItem product={item} index={index} />
-        )}
-      />
-  )
-}
+      className="flex-1 flex-wrap"
+      numColumns={products!.length >= 2 ? 2 : 1}
+      data={products}
+      keyExtractor={(item) => item.id.toString()}
+      key={products?.length}
+      renderItem={({ item, index }) => (
+        <ProductItem product={item} index={index} />
+      )}
+    />
+  );
+};
 
-export default ProductList
+export default ProductList;

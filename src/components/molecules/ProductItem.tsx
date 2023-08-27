@@ -2,7 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { getOfferPrice } from "@src/shared/helpers/getOfferPrice";
 import { Product } from "@src/shared/interfaces/Product";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  useWindowDimensions,
+} from "react-native";
 
 interface ProductItemProps {
   product: Product;
@@ -11,13 +17,16 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
   const navigation = useNavigation();
+  const { width } = useWindowDimensions();
+  const itemWidth = width / 2 - 12;
 
   return (
     <TouchableOpacity
+      className={`mb-3 ${index % 2 === 1 && "pl-3"}`}
+      style={{ width: itemWidth }}
       onPress={() =>
         navigation.navigate("ProductDatails", { productId: product.id })
       }
-      className={`w-1/2 mb-3 ${index % 2 === 1 && "pl-3"}`}
     >
       <View className="bg-white p-3 rounded-xl relative">
         <View className="items-center absolute right-3 p-1 rounded-b-lg z-10 bg-zinc-100">
