@@ -20,7 +20,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
       className={`w-1/2 mb-3 ${index % 2 === 1 && "pl-3"}`}
     >
       <View className="bg-white p-3 rounded-xl relative">
-        <View className="items-center absolute right-3 p-1 rounded-b-lg z-10 bg-slate-100">
+        <View className="items-center absolute right-3 p-1 rounded-b-lg z-10 bg-zinc-100">
           <Ionicons name="star" size={18} color="#e4ca05" />
           <Text className="font-bold">{product.rating.rate}</Text>
         </View>
@@ -32,7 +32,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
           resizeMode="contain"
         />
 
-        <Text className="text-slate-400 text-center text-xs">
+        <Text className="text-zinc-400 text-center text-xs">
           {product.category}
         </Text>
 
@@ -44,7 +44,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
           <Text className="font-bold text-lg text-amber-500 -mb-1">
             R$ {getOfferPrice(product.price)}
           </Text>
-          <Text className="text-normal text-slate-300 line-through">
+          <Text className="text-normal text-zinc-300 line-through">
             R$ {product.price}
           </Text>
         </View>

@@ -9,7 +9,7 @@ interface ScreenContainerProps extends PropsWithChildren {
 const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, justifyContent, className }) => {
   return (
     <SafeAreaView
-      className={`flex-1 items-center bg-slate-200 ${
+      className={`flex-1 items-center bg-zinc-200 ${
         justifyContent ?? "justify-center"
       } ${className}`}
     >
