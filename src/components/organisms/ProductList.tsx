@@ -3,14 +3,14 @@ import { FlatList, Text } from 'react-native';
 import ProductItem from '../molecules/ProductItem';
 
 interface ProductListProps {
-  products: Product[];
+  products?: Product[];
   isLoading: boolean;
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products, isLoading }) => {
   if (isLoading) return <Text>Loading...</Text>;
 
-  if (products.length === 0) return <Text>There're no products to list!</Text>;
+  if (products?.length === 0) return <Text>There're no products to list!</Text>;
 
   return (
     <FlatList

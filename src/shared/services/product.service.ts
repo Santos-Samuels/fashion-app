@@ -2,9 +2,13 @@ import { Product, ProductCategoryTypes } from "../interfaces/Product";
 import api from "./api";
 
 type sortTypes = "asc" | "desc";
+interface ProductListParams {
+  limit?: number;
+  sort?: sortTypes;
+}
 
 const ProductServices = {
-  list: async (limit?: number, sort?: sortTypes) => {
+  list: async ({ limit, sort }: ProductListParams) => {
     return await api.get<Product[]>("/products", {
       params: {
         limit,

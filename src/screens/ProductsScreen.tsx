@@ -1,33 +1,19 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Text } from "react-native";
 import { ProductList, ScreenContainer } from "../components";
-import { Product } from "../shared/interfaces/Product";
 import { ProductServices } from "../shared/services";
 
 const ProductsScreen = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const fetchProducts = async () => {
-    setIsLoading(true);
-    const { list } = ProductServices;
-
-    try {
-      const { data } = await list();
-      setProducts(data);
-    } catch (error) {}
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const { isLoading, data } = useQuery({
+    queryKey: ["products"],
+    queryFn: ProductServices.list.bind(null, {}),
+  });
 
   return (
     <ScreenContainer>
       <Text className="text-center mb-2">Filters Comes Here</Text>
 
-      <ProductList products={products} isLoading={isLoading} />
+      <ProductList products={data?.data} isLoading={isLoading} />
     </ScreenContainer>
   );
 };
