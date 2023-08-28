@@ -4,10 +4,15 @@ import { Text, View } from "react-native";
 
 interface InputNumberProps {
   value: number;
+  isBordered?: boolean;
   setValue: (value: number) => void;
 }
 
-const InputNumber: React.FC<InputNumberProps> = ({ value, setValue }) => {
+const InputNumber: React.FC<InputNumberProps> = ({
+  value,
+  setValue,
+  isBordered,
+}) => {
   const handleIncrement = () => {
     if (value < 10) setValue(value + 1);
   };
@@ -17,7 +22,11 @@ const InputNumber: React.FC<InputNumberProps> = ({ value, setValue }) => {
   };
 
   return (
-    <View className="flex-row items-center justify-between bg-white rounded-lg px-3 py-2">
+    <View
+      className={`flex-row items-center justify-between bg-white rounded-lg px-3 py-2 ${
+        isBordered && "border border-zinc-200"
+      }`}
+    >
       <Ionicons
         name="remove"
         size={24}

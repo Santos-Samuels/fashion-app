@@ -12,9 +12,15 @@ const ProductRate: React.FC<ProductRateProps> = ({ rating, starsSize }) => {
     const toRenderStars: React.ReactNode[] = [];
     const stars = rate.toString().split(".");
 
+    const unicId = new Date().getTime();
     for (let index = 0; index < +stars[0]; index++) {
       toRenderStars.push(
-        <Ionicons name="star" size={starsSize} color="#e4ca05" />
+        <Ionicons
+          name="star"
+          size={starsSize}
+          color="#e4ca05"
+          key={`star-${unicId + index}`}
+        />
       );
     }
 
@@ -26,7 +32,12 @@ const ProductRate: React.FC<ProductRateProps> = ({ rating, starsSize }) => {
     if (toRenderStars.length < 5) {
       for (let index = 0; toRenderStars.length < 5; index++) {
         toRenderStars.push(
-          <Ionicons name="star-outline" size={starsSize} color="#e4ca05" />
+          <Ionicons
+            name="star-outline"
+            size={starsSize}
+            color="#e4ca05"
+            key={`star-outline-${unicId + index}`}
+          />
         );
       }
     }

@@ -8,13 +8,13 @@ interface VoidListMessageProps {
 
 const VoidListMessage: React.FC<VoidListMessageProps> = ({ message }) => {
   return (
-    <View className="flex-1 items-center justify-center">
+    <View className="flex-1 items-center justify-center w-5/6">
       <FontAwesome5
         name="exclamation-triangle"
         size={50}
         color={colors.iconColor_light}
       />
-      <Text className="text-lg mt-2 text-zinc-400">{message}</Text>
+      <Text className="text-lg mt-2 text-zinc-400 text-center">{message}</Text>
     </View>
   );
 };

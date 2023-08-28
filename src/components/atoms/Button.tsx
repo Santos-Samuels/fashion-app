@@ -1,6 +1,7 @@
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 interface ButtonProps {
+  icon?: React.ReactNode;
   title: string;
   onPress: () => void;
   size?: "sm" | "md" | "lg";
@@ -12,12 +13,15 @@ const sizesStyle = {
   lg: "py-4 px-8",
 };
 
-const Button: React.FC<ButtonProps> = ({ title, onPress, size }) => {
+const Button: React.FC<ButtonProps> = ({ title, onPress, size, icon }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className={`bg-zinc-800 rounded-lg ${sizesStyle[size || "md"]}`}
+      className={`flex-row items-center justify-center bg-zinc-800 rounded-lg ${
+        sizesStyle[size || "md"]
+      }`}
     >
+      {icon ? <View className="mr-1">{icon}</View> : null}
       <Text className="font-semibold text-white text-lg">{title}</Text>
     </TouchableOpacity>
   );
