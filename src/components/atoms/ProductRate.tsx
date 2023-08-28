@@ -46,7 +46,7 @@ const ProductRate: React.FC<ProductRateProps> = ({ rating, starsSize }) => {
   };
 
   return (
-    <View className="flex-row items-center justify-between rounded-lg z-10 bg-zinc-100 p-2">
+    <View className="flex-row items-center justify-between rounded-lg z-10 bg-white p-2">
       <View className="flex-row items-center">
         {getStars(rating.rate, 20)}
         <Text className="font-bold ml-2 text-lg">{rating.rate}</Text>

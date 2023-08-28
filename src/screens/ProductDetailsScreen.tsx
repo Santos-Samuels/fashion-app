@@ -63,7 +63,7 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
 
   return (
     <ScreenContainer>
-      <View className="bg-white -mt-16 rounded-b-3xl w-screen justify-self-start">
+      <View className="bg-white -mt-16 rounded-b-3xl -mx-3 justify-self-start">
         <View className="mb-2 mt-24 relative">
           <Image
             className="self-center"
