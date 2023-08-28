@@ -1,68 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
-import { ProductFilterParams } from "@src/shared/interfaces/Product";
+import { AppContext } from "@src/context/AppContext";
+import { Categories } from "@src/shared/constants/productCategories";
 import { colors } from "@src/shared/themes/colors";
+import { useContext } from "react";
 import { TouchableOpacity, View } from "react-native";
 import Button from "../atoms/Button";
 import CategoryBridge from "../atoms/CategoryBridge";
 import Input from "../atoms/Input";
 
-interface ProductFilterProps {
-  filters?: ProductFilterParams;
-  setFilters: (filter: ProductFilterParams) => void;
-  filterHandler: () => void;
-}
-
-const Categories = [
-  "all",
-  "electronics",
-  "jewelery",
-  "men's clothing",
-  "women's clothing",
-];
-
-const ProductFilter: React.FC<ProductFilterProps> = ({
-  filters,
-  setFilters,
-  filterHandler,
-}) => {
+const ProductFilter = () => {
+  const { filters, setFilters, toggleCategoryFilter } = useContext(AppContext);
   const filterItems = filters ?? { title: "", category: ["all"] };
-
-  const toggleCategoryFilter = (category: string) => {
-    // if category is "all", then clear all filters
-    if (category === "all") {
-      setFilters({
-        ...filterItems,
-        category: ["all"],
-      });
-      return;
-    }
-
-    // if category is already selected, then remove it from filters
-    if (filterItems.category.includes(category)) {
-      const filteredCategories = filterItems.category.filter(
-        (item) => item !== category
-      );
-
-      if (filteredCategories.length === 0) {
-        filteredCategories.push("all");
-      }
-
-      setFilters({
-        ...filterItems,
-        category: filteredCategories || ["all"],
-      });
-      return;
-    }
-
-    // if category is not selected, then add it to filters
-    // and remove "all" category if any other categories are selected
-    if (filterItems.category.includes("all")) filterItems.category.pop();
-
-    setFilters({
-      ...filterItems,
-      category: [category, ...filterItems.category],
-    });
-  };
 
   return (
     <>
@@ -77,7 +25,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
             <Ionicons name="search" size={24} color={colors.iconColor_light} />
           }
         />
-        <Button size="sm" onPress={filterHandler} title="Clear" />
+        <Button size="sm" onPress={() => setFilters(undefined)} title="Clear" />
       </View>
 
       <View className="flex-row items-center justify-between w-full gap-1 mb-4">

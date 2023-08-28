@@ -1,4 +1,6 @@
-import { Product, ProductFilterParams } from "@src/shared/interfaces/Product";
+import { AppContext } from "@src/context/AppContext";
+import { Product } from "@src/shared/interfaces/Product";
+import { useContext } from "react";
 import { FlatList, Text } from "react-native";
 import VoidListMessage from "../atoms/VoidListMessage";
 import ProductFilter from "../molecules/ProductFilter";
@@ -8,16 +10,11 @@ import ProductListSkeleton from "../molecules/ProductListSkeleton";
 interface ProductListProps {
   products?: Product[];
   isLoading: boolean;
-  filters?: ProductFilterParams;
-  setFilters: (filter?: ProductFilterParams) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({
-  products,
-  isLoading,
-  filters,
-  setFilters,
-}) => {
+const ProductList: React.FC<ProductListProps> = ({ products, isLoading }) => {
+  const { filters } = useContext(AppContext);
+
   if (isLoading) return <ProductListSkeleton />;
 
   if (products?.length === 0 && !filters)
@@ -25,11 +22,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <>
-      <ProductFilter
-        filters={filters}
-        setFilters={(filters) => setFilters(filters)}
-        filterHandler={() => setFilters(undefined)}
-      />
+      <ProductFilter />
 
       {products?.length !== 0 ? (
         <>

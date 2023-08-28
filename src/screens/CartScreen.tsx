@@ -1,9 +1,9 @@
 import { CartDetails, CartList, ScreenContainer } from "@src/components";
-import { CartContext } from "@src/context/CartContext";
+import { AppContext } from "@src/context/AppContext";
 import { useContext } from "react";
 
 const CartScreen = () => {
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(AppContext);
   return (
     <ScreenContainer>
       <CartList cart={cart} />

@@ -1,11 +1,11 @@
-import { ProductFilterParams } from "@src/shared/interfaces/Product";
+import { AppContext } from "@src/context/AppContext";
 import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import { ProductList, ScreenContainer } from "../components";
 import { ProductServices } from "../shared/services";
 
 const ProductsScreen = () => {
-  const [filters, setFilters] = useState<ProductFilterParams>();
+  const { filters } = useContext(AppContext);
 
   const { isLoading, data } = useQuery({
     queryKey: ["products"],
@@ -28,7 +28,10 @@ const ProductsScreen = () => {
     });
   };
 
-  const filteredProducts = useMemo(() => filterProducts() || [], [filters]);
+  const filteredProducts = useMemo(
+    () => filterProducts() || [],
+    [filters, data?.data]
+  );
 
   return (
     <ScreenContainer
@@ -37,8 +40,6 @@ const ProductsScreen = () => {
       <ProductList
         products={filters ? filteredProducts : data?.data}
         isLoading={isLoading}
-        filters={filters}
-        setFilters={(filter?: ProductFilterParams) => setFilters(filter)}
       />
     </ScreenContainer>
   );

@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { CartContext } from "@src/context/CartContext";
+import { AppContext } from "@src/context/AppContext";
 import { CartItemType } from "@src/shared/interfaces/Cart";
 import { colors } from "@src/shared/themes/colors";
 import { useContext } from "react";
@@ -11,7 +11,7 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-  const { UpdateCart, removeCartItem } = useContext(CartContext);
+  const { UpdateCart, removeCartItem } = useContext(AppContext);
 
   const updateItemQuantity = (updatedQuantity: number) => {
     UpdateCart({

@@ -1,10 +1,10 @@
-import { CartContext } from "@src/context/CartContext";
+import { AppContext } from "@src/context/AppContext";
 import { useContext } from "react";
 import { Text, View } from "react-native";
 import Button from "../atoms/Button";
 
 const CartDetails = () => {
-  const { calculateCartTotal } = useContext(CartContext);
+  const { calculateCartTotal } = useContext(AppContext);
   const { subTotal, discount, total } = calculateCartTotal();
 
   return (

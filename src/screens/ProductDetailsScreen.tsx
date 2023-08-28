@@ -10,7 +10,7 @@ import {
   ScreenContainer,
   VoidListMessage,
 } from "@src/components";
-import { CartContext } from "@src/context/CartContext";
+import { AppContext } from "@src/context/AppContext";
 import { RootStackParamList } from "@src/routes/stack.routes";
 import { getOldPrice } from "@src/shared/helpers/getOldPrice";
 import { Product } from "@src/shared/interfaces/Product";
@@ -24,7 +24,7 @@ type ScreenProps = NativeStackScreenProps<RootStackParamList, "ProductDetails">;
 const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
   const { productId } = route.params;
   const [quantity, setQuantity] = useState<number>(1);
-  const { addCartItem, cart } = useContext(CartContext);
+  const { addCartItem, cart } = useContext(AppContext);
   const navigation = useNavigation();
 
   const { isLoading, data, error } = useQuery({

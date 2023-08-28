@@ -1,22 +1,27 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { CartContext } from "@src/context/CartContext";
+import { AppContext } from "@src/context/AppContext";
 import { CartScreen, HomeScreen, ProductsScreen } from "@src/screens";
 import { colors } from "@src/shared/themes/colors";
 import { useContext } from "react";
 
-const { Navigator, Screen } = createBottomTabNavigator();
+export type RootTabParamList = {
+  Home: undefined;
+  Products: undefined;
+  Cart: undefined;
+};
+
+const { Navigator, Screen } = createBottomTabNavigator<RootTabParamList>();
 
 const TabRoutes = () => {
-  const { cart } = useContext(CartContext);
-  
+  const { cart } = useContext(AppContext);
+
   return (
     <Navigator
       initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
       }}
-
     >
       <Screen
         name="Home"
