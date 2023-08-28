@@ -10,7 +10,7 @@ const ProductDetailsSkeleton = () => {
           animation="flash"
           iterationCount="infinite"
           easing="ease"
-          duration={3000}
+          duration={5000}
           className="mb-2 mt-24"
         >
           <View className="bg-zinc-200 rounded-lg self-center w-10/12 h-[300px] mx-2 mb-2" />
@@ -22,7 +22,7 @@ const ProductDetailsSkeleton = () => {
         animation="flash"
         iterationCount="infinite"
         easing="ease"
-        duration={3000}
+        duration={5000}
         className="flex-1 justify-between px-9 my-3 w-screen"
       >
         <View>

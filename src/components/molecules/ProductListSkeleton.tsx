@@ -18,7 +18,7 @@ const ProductListSkeleton = () => {
             animation="flash"
             iterationCount="infinite"
             easing="ease"
-            duration={3000}
+            duration={5000}
           >
             <View className="bg-zinc-200 rounded-lg h-[120px] mb-2" />
             <View className="bg-zinc-200 rounded-lg p-1 mb-2" />
