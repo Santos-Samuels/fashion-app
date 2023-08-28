@@ -55,7 +55,7 @@ const TabRoutes = () => {
               color={focused ? colors.tabMenuIcons_active : colors.tabMenuIcons}
             />
           ),
-          tabBarBadge: cart.items.length > 0 ? cart.items.length : undefined,
+          tabBarBadge: cart.length > 0 ? cart.length : undefined,
           tabBarBadgeStyle: {
             backgroundColor: colors.tabMenuIcons_active,
           },

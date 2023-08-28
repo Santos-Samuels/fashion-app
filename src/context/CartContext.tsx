@@ -1,8 +1,8 @@
-import { Cart, CartItemType, CartsBill } from "@src/shared/interfaces/Cart";
+import { CartItemType, CartsBill } from "@src/shared/interfaces/Cart";
 import { PropsWithChildren, createContext, useState } from "react";
 
 interface ContextProps {
-  cart: Cart;
+  cart: CartItemType[];
   addCartItem: (item: CartItemType) => void;
   removeCartItem: (item: CartItemType) => void;
   UpdateCart: (item: CartItemType) => void;
@@ -10,20 +10,13 @@ interface ContextProps {
   clearCart: () => void;
 }
 
-const initialCart: Cart = {
-  items: [],
-  discount: 0,
-  subTotal: 0,
-  total: 0,
-};
-
 const CartContext = createContext<ContextProps>({} as ContextProps);
 
 const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [cart, setCart] = useState<Cart>(initialCart);
+  const [cart, setCart] = useState<CartItemType[]>([]);
 
   const calculateCartTotal = (): CartsBill => {
-    return cart.items.reduce(
+    return cart.reduce(
       (acc, item) => {
         const itemDiscount = (item.oldPrice - item.price) * item.quantity;
         const itemSubTotal = item.oldPrice * item.quantity;
@@ -39,25 +32,20 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   const addCartItem = (item: CartItemType) => {
-    setCart((prev) => ({
-      ...prev,
-      items: [...prev.items, item],
-    }));
+    setCart((prev) => [...prev, item]);
   };
 
   const removeCartItem = (item: CartItemType) => {
-    setCart((prev) => ({
-      ...prev,
-      items: prev.items.filter((i) => i.id !== item.id),
-    }));
+    const updatedItems = cart.filter((i) => i.id !== item.id);
+    setCart(updatedItems);
   };
 
   const clearCart = () => {
-    setCart(initialCart);
+    setCart([]);
   };
 
   const UpdateCart = (item: CartItemType) => {
-    const updatedItems = cart.items.map((i) => {
+    const updatedItems = cart.map((i) => {
       if (i.id === item.id)
         return {
           ...i,
@@ -67,10 +55,7 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
       return i;
     });
 
-    setCart((prev) => ({
-      ...prev,
-      items: updatedItems,
-    }));
+    setCart(updatedItems);
   };
 
   return (

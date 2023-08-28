@@ -33,8 +33,8 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
   });
 
   const isAddedInCart = useMemo(
-    () => cart.items.some((item) => item.id === productId),
-    [cart.items, productId]
+    () => cart.some((item) => item.id === productId),
+    [cart, productId]
   );
 
   const formatDescription = (description: string) => {

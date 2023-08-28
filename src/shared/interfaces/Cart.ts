@@ -11,7 +11,3 @@ export interface CartsBill {
   total: number;
 }
 
-export interface Cart extends CartsBill {
-  items: CartItemType[];
-}
-
