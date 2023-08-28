@@ -26,7 +26,7 @@ const ProductRate: React.FC<ProductRateProps> = ({ rating, starsSize }) => {
 
     if (+stars[1] > 0)
       toRenderStars.push(
-        <Ionicons name="star-half-sharp" size={starsSize} color="#e4ca05" />
+        <Ionicons name="star-half-sharp" size={starsSize} color="#e4ca05" key={`star-half-sharp-${unicId}`} />
       );
 
     if (toRenderStars.length < 5) {
