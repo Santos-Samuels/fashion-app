@@ -55,10 +55,10 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
 
         <View className="flex-row items-end justify-between">
           <Text className="font-bold text-lg text-amber-500 -mb-1">
-            R$ {product.price}
+            $ {product.price}
           </Text>
           <Text className="text-normal text-zinc-300 line-through">
-            R$ {getOldPrice(product.price)}
+            $ {getOldPrice(product.price)}
           </Text>
         </View>
       </View>

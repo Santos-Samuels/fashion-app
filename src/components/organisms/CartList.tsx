@@ -1,12 +1,13 @@
-import { CartContext } from "@src/context/CartContext";
-import { useContext } from "react";
+import { CartItemType } from "@src/shared/interfaces/Cart";
 import { FlatList, Text } from "react-native";
 import VoidListMessage from "../atoms/VoidListMessage";
 import CartItem from "../molecules/CartItem";
 
-const CartList = () => {
-  const { cart } = useContext(CartContext);
+interface CartListProps {
+  cart: CartItemType[];
+}
 
+const CartList: React.FC<CartListProps> = ({ cart }) => {
   if (cart.length === 0)
     return (
       <VoidListMessage message="Your cart is as empty as a desert island. Time to fill it up!" />

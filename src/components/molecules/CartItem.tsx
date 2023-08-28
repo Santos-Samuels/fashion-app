@@ -53,10 +53,10 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
         <View className="flex-row items-end justify-between mt-2 clas">
           <View className="items-end">
             <Text className="text-xs text-zinc-300 line-through -mb-1">
-              R$ {item.oldPrice}
+              $ {item.oldPrice}
             </Text>
             <Text className="font-bold text-lg text-amber-500">
-              R$ {item.price}
+              $ {item.price}
             </Text>
           </View>
 

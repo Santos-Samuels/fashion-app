@@ -109,10 +109,10 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
             <Text className="text-lg font-semibold mt-3">Price</Text>
             <View className="flex-row items-end gap-3">
               <Text className="font-bold text-3xl text-amber-500 -mb-1">
-                R$ {product.price}
+                $ {product.price}
               </Text>
               <Text className="text-normal text-zinc-400 line-through">
-                R$ {oldPrice}
+                $ {oldPrice}
               </Text>
             </View>
           </View>

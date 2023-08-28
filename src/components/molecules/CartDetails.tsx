@@ -12,20 +12,20 @@ const CartDetails = () => {
       <View className="flex-row items-center justify-between mb-3">
         <Text className="text-zinc-400 mr-2">Sub-Total: </Text>
         <Text className="text-zinc-400 font-semibold">
-          {subTotal.toFixed(2)}
+          {subTotal.toFixed(2)} $
         </Text>
       </View>
 
       <View className="flex-row items-center justify-between pb-3">
         <Text className="text-zinc-400 mr-2">Discount: </Text>
         <Text className="text-zinc-400 font-semibold">
-          {discount.toFixed(2)}
+          {discount.toFixed(2)} $
         </Text>
       </View>
 
       <View className="flex-row items-center justify-between border-t border-zinc-200 pt-3">
         <Text className="text-base mr-2">Total: </Text>
-        <Text className="text-base font-semibold">{total.toFixed(2)}</Text>
+        <Text className="text-base font-semibold">{total.toFixed(2)} $</Text>
       </View>
 
       <View className="mt-5">
