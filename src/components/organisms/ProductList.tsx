@@ -3,6 +3,7 @@ import { FlatList, Text } from "react-native";
 import VoidListMessage from "../atoms/VoidListMessage";
 import ProductFilter from "../molecules/ProductFilter";
 import ProductItem from "../molecules/ProductItem";
+import ProductListSkeleton from "../molecules/ProductListSkeleton";
 
 interface ProductListProps {
   products?: Product[];
@@ -17,7 +18,7 @@ const ProductList: React.FC<ProductListProps> = ({
   filters,
   setFilters,
 }) => {
-  if (isLoading) return <Text>Loading...</Text>;
+  if (isLoading) return <ProductListSkeleton />;
 
   if (products?.length === 0 && !filters)
     return <VoidListMessage message="There're no products to list!" />;

@@ -5,6 +5,7 @@ import {
   BackButton,
   Button,
   InputNumber,
+  ProductDetailsSkeleton,
   ProductRate,
   ScreenContainer,
   VoidListMessage,
@@ -52,7 +53,7 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
     navigation.navigate("Cart");
   };
 
-  if (isLoading) return <Text>Loading...</Text>;
+  if (isLoading) return <ProductDetailsSkeleton />;
 
   if (error || !data?.data)
     return <VoidListMessage message="Failed to load product details!" />;
@@ -94,10 +95,7 @@ const ProductDetailsScreen: React.FC<ScreenProps> = ({ route }) => {
           <View className="flex-row items-center justify-between">
             <View>
               <Text className="text-lg font-semibold">Rating</Text>
-              <ProductRate
-                rating={product.rating}
-                starsSize={25}
-              />
+              <ProductRate rating={product.rating} starsSize={25} />
             </View>
             <View className="flex-1 ml-4">
               <Text className="text-lg font-semibold">Quantity</Text>
