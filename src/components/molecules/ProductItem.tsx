@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { getOfferPrice } from "@src/shared/helpers/getOfferPrice";
+import { getOldPrice } from "@src/shared/helpers/getOldPrice";
 import { Product } from "@src/shared/interfaces/Product";
 import {
   Image,
@@ -45,16 +45,20 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
           {product.category}
         </Text>
 
-        <Text className="font-semibold text-normal max-h-9 my-1">
+        <Text
+          className="font-semibold text-normal my-1"
+          ellipsizeMode="tail"
+          numberOfLines={2}
+        >
           {product.title}
         </Text>
 
         <View className="flex-row items-end justify-between">
           <Text className="font-bold text-lg text-amber-500 -mb-1">
-            R$ {getOfferPrice(product.price)}
+            R$ {product.price}
           </Text>
           <Text className="text-normal text-zinc-300 line-through">
-            R$ {product.price}
+            R$ {getOldPrice(product.price)}
           </Text>
         </View>
       </View>

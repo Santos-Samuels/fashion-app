@@ -1,17 +1,22 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CartContext } from "@src/context/CartContext";
 import { CartScreen, HomeScreen, ProductsScreen } from "@src/screens";
 import { colors } from "@src/shared/themes/colors";
+import { useContext } from "react";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 const TabRoutes = () => {
+  const { cart } = useContext(CartContext);
+  
   return (
     <Navigator
-    initialRouteName="Home"
+      initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
       }}
+
     >
       <Screen
         name="Home"
@@ -50,10 +55,10 @@ const TabRoutes = () => {
               color={focused ? colors.tabMenuIcons_active : colors.tabMenuIcons}
             />
           ),
-          tabBarBadge: 0,
+          tabBarBadge: cart.items.length > 0 ? cart.items.length : undefined,
           tabBarBadgeStyle: {
             backgroundColor: colors.tabMenuIcons_active,
-          }
+          },
         }}
       />
     </Navigator>

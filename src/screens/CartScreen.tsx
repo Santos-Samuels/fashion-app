@@ -1,10 +1,10 @@
-import { ScreenContainer } from "@src/components";
-import { Text } from "react-native";
+import { CartDetails, CartList, ScreenContainer } from "@src/components";
 
 const CartScreen = () => {
   return (
     <ScreenContainer>
-      <Text>CartScreen</Text>
+      <CartList />
+      <CartDetails />
     </ScreenContainer>
   );
 };
