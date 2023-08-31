@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "@src/shared/themes/colors";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 interface InputNumberProps {
   value: number;
@@ -27,26 +27,27 @@ const InputNumber: React.FC<InputNumberProps> = ({
         isBordered && "border border-zinc-200"
       }`}
     >
-      <Ionicons
-        name="remove"
-        size={24}
-        onPress={handleDecrement}
-        color={value > 1 ? colors.tabMenuIcons_active : colors.iconColor_light}
-      />
+      <TouchableOpacity testID="remove" onPress={handleDecrement}>
+        <Ionicons
+          name="remove"
+          size={24}
+          color={
+            value > 1 ? colors.tabMenuIcons_active : colors.iconColor_light
+          }
+        />
+      </TouchableOpacity>
 
       <Text
         className="font-semibold mx-2 text-zinc-700"
         style={{ fontSize: 17 }}
+        testID="counter"
       >
         {value}
       </Text>
 
-      <Ionicons
-        name="add"
-        size={24}
-        onPress={handleIncrement}
-        color={colors.tabMenuIcons_active}
-      />
+      <TouchableOpacity testID="add" onPress={handleIncrement}>
+        <Ionicons name="add" size={24} color={colors.tabMenuIcons_active} />
+      </TouchableOpacity>
     </View>
   );
 };

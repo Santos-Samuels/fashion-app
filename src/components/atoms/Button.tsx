@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, size, icon }) => {
         sizesStyle[size || "md"]
       }`}
     >
-      {icon ? <View className="mr-1">{icon}</View> : null}
+      {icon ? <View className="mr-1" testID="button-icon">{icon}</View> : null}
       <Text className="font-semibold text-white text-lg">{title}</Text>
     </TouchableOpacity>
   );
