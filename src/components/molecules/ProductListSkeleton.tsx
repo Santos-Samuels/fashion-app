@@ -36,7 +36,7 @@ const ProductListSkeleton = () => {
   };
 
   return (
-    <View className="flex-row items-center justify-between w-full flex-wrap">
+    <View testID="loading-skeleton" className="flex-row items-center justify-between w-full flex-wrap">
       {getItems()}
     </View>
   );
