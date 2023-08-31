@@ -78,6 +78,9 @@ Tecnologias utilizadas na construção do projeto
 ## API
 * [Fake Store API](https://fakestoreapi.com/docs)
 
+## Design System
+* [Atomic Design](https://atomicdesign.bradfrost.com/chapter-2/)
+
 ### Testes
 * [Jest](https://jestjs.io/pt-BR/docs/getting-started)
 * [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
