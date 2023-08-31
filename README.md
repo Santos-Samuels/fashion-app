@@ -69,6 +69,7 @@ yarn test nome-do-arquivo.spec.tsx
 ## 🛠️ Construído com
 
 Tecnologias utilizadas na construção do projeto
+
 ### Aplicação
 * [Expo React Native](https://docs.expo.dev/)
 * [TypeScript](https://www.typescriptlang.org/docs/)
@@ -84,3 +85,50 @@ Tecnologias utilizadas na construção do projeto
 ### Testes
 * [Jest](https://jestjs.io/pt-BR/docs/getting-started)
 * [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
+
+## 📁 Diretórios
+
+Organização dos diretórios do projeto
+
+```
+src
+ |--components
+    |--atoms
+      |--__test__
+    |--model
+      |--__test__
+    |--molecules
+      |--__test__
+    |--organisms
+      |--__test__
+ |--context
+ |--routes
+ |--screens
+    |--__test__
+ |--shared
+    |--constants
+    |--helpers
+    |--interface
+    |--services
+    |--themes
+
+test
+```
+
+* **src**: Este é o diretório principal onde todo o código-fonte do seu projeto está localizado.
+* **components**: Aqui é onde você organiza os diferentes elementos reutilizáveis da interface do usuário do seu aplicativo.
+* **atoms**: Componentes simples e indivisíveis, como botões, inputs e textos.
+* **molecules**: Composições de componentes atoms que juntos formam unidades funcionais maiores.
+* **organisms**: Componentes mais complexos que podem incluir vários elementos, como cabeçalhos e rodapés.
+* **context**: Contém a lógica de gerenciamento de estado global, utilizando Context API.
+* **routes**: Aqui você gerencia a navegação e as rotas do seu aplicativo, determinando como os diferentes componentes/screns são exibidos.
+* **screens**: Contém os componentes que representam páginas ou telas individuais do seu aplicativo.
+* **shared**: Este diretório contém recursos compartilhados e utilitários.
+* **constants**: Valores constantes que podem ser usados em várias partes do código.
+* **helpers**: Funções utilitárias que auxiliam em várias tarefas.
+* **interface**: Interfaces ou tipos compartilhados que definem a estrutura dos dados.
+* **services**: Módulos para lidar com lógica de rede ou serviços externos.
+* **themes**: Arquivos de estilo ou temas compartilhados para manter a consistência visual.
+* **test**: Contém arquivos relacionados os testes, como configurações globais ou arquivos de mock.
+* **__test__**: Contém os testes automatizados para garantir que o código funcione conforme o esperado.
+
