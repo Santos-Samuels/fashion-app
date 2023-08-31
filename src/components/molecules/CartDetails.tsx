@@ -8,7 +8,7 @@ const CartDetails = () => {
   const { subTotal, discount, total } = calculateCartTotal();
 
   return (
-    <View className="bg-white rounded-t-3xl p-5 pb-7 -m-3 mt-2">
+    <View className="bg-white rounded-t-3xl p-5 pb-7 -m-3 mt-2" testID="cart-details">
       <View className="flex-row items-center justify-between mb-3">
         <Text className="text-zinc-400 mr-2">Sub-Total: </Text>
         <Text className="text-zinc-400 font-semibold">

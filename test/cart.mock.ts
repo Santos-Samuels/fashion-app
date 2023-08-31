@@ -1,4 +1,4 @@
-import { CartItemType } from "@src/shared/interfaces/Cart";
+import { CartItemType, CartsBill } from "@src/shared/interfaces/Cart";
 
 export const cartItem: CartItemType = {
   id: 1,
@@ -45,3 +45,19 @@ export const cartItems: CartItemType[] = [
     quantity: 4,
   },
 ];
+
+export const calculateCartTotalMock = (): CartsBill => {
+  return cartItems.reduce(
+    (acc, item) => {
+      const itemDiscount = (item.oldPrice - item.price) * item.quantity;
+      const itemSubTotal = item.oldPrice * item.quantity;
+
+      acc.discount += itemDiscount;
+      acc.subTotal += itemSubTotal;
+      acc.total += itemSubTotal - itemDiscount;
+
+      return acc;
+    },
+    { discount: 0, subTotal: 0, total: 0 }
+  );
+};
