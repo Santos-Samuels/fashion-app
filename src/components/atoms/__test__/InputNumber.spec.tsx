@@ -14,31 +14,31 @@ describe("InputNumber", () => {
     expect(value).toBeTruthy();
   });
 
-  it("should increment 1 when clicking the plus button", () => {
+  it("should increment 1 when clicking the increse button", () => {
     const { getByText, getByTestId } = render(
       <InputNumber value={1} setValue={setValueMock} />
     );
 
     const counterValue = getByText("1");
-    const addButton = getByTestId("add");
+    const increseButton = getByTestId("increase");
 
     expect(counterValue).toBeTruthy();
 
-    fireEvent.press(addButton);
+    fireEvent.press(increseButton);
     expect(setValueMock).toHaveBeenCalledWith(2);
   });
 
-  it("should decrement 1 when clicking the minus button", () => {
+  it("should decrement 1 when clicking the decrease button", () => {
     const { getByText, getByTestId } = render(
       <InputNumber value={2} setValue={setValueMock} />
     );
 
     const counterValue = getByText("2");
-    const removeButton = getByTestId("remove");
+    const decreaseButton = getByTestId("decrease");
 
     expect(counterValue).toBeTruthy();
 
-    fireEvent.press(removeButton);
+    fireEvent.press(decreaseButton);
     expect(setValueMock).toHaveBeenCalledWith(1);
   });
 });
