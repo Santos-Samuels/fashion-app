@@ -18,7 +18,7 @@ const ProductFilter = () => {
         <Input
           adicionalClass="mr-2"
           placeholder="Search by title"
-          defaultValue={filterItems.title || ""}
+          value={filterItems.title || ""}
           onChangeText={(text) => setFilters({ ...filterItems, title: text })}
           style={{ fontSize: 17 }}
           icon={

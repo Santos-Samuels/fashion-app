@@ -15,7 +15,10 @@ const CategoryBridge: React.FC<CategoryBridgeProps> = ({
         isActived ? "bg-amber-500" : "bg-zinc-300"
       }`}
     >
-      <Text className={`text-xs ${isActived ? "text-white" : "text-zinc-500"}`}>
+      <Text
+        aria-checked={isActived}
+        className={`text-xs ${isActived ? "text-white" : "text-zinc-500"}`}
+      >
         {category}
       </Text>
     </View>

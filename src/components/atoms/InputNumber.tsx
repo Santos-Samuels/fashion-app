@@ -27,7 +27,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
         isBordered && "border border-zinc-200"
       }`}
     >
-      <TouchableOpacity testID="remove" onPress={handleDecrement}>
+      <TouchableOpacity testID="decrease" onPress={handleDecrement}>
         <Ionicons
           name="remove"
           size={24}
@@ -41,11 +41,12 @@ const InputNumber: React.FC<InputNumberProps> = ({
         className="font-semibold mx-2 text-zinc-700"
         style={{ fontSize: 17 }}
         testID="counter"
+        aria-valuenow={value}
       >
         {value}
       </Text>
 
-      <TouchableOpacity testID="add" onPress={handleIncrement}>
+      <TouchableOpacity testID="increase" onPress={handleIncrement}>
         <Ionicons name="add" size={24} color={colors.tabMenuIcons_active} />
       </TouchableOpacity>
     </View>

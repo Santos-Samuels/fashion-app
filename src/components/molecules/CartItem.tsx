@@ -27,6 +27,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
           source={{ uri: item.image }}
           style={{ height: 120, width: 120 }}
           resizeMode="contain"
+          testID="product-image"
         />
       </View>
 
@@ -40,7 +41,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             {item.title}
           </Text>
 
-          <TouchableOpacity onPress={() => removeCartItem(item)}>
+          <TouchableOpacity onPress={() => removeCartItem(item)} testID="trash">
             <Ionicons name="trash" size={24} color={colors.tabMenuIcons} />
           </TouchableOpacity>
         </View>

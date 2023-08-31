@@ -30,7 +30,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
     >
       <View className="bg-white p-3 rounded-xl relative">
         <View className="items-center absolute right-3 p-1 rounded-b-lg z-10 bg-zinc-100">
-          <Ionicons name="star" size={18} color="#e4ca05" />
+          <View testID="star">
+            <Ionicons name="star" size={18} color="#e4ca05" />
+          </View>
           <Text className="font-bold">{product.rating.rate}</Text>
         </View>
 
@@ -39,6 +41,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, index }) => {
           source={{ uri: product.image }}
           style={{ height: 120, width: 120 }}
           resizeMode="contain"
+          testID="product-image"
         />
 
         <Text className="text-zinc-400 text-center text-xs">
